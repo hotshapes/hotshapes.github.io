@@ -2,27 +2,63 @@
 <html>
     <head>
         <link rel="shortcut icon" type="image/png" href="icon.png"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
         <style>
+            html {
+                height: 100%;
+            }
+            * {
+                box-sizing: border-box;
+            }
+            body {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                padding: 40px;
+                margin: 0px;
+            }
             #logo {
+                max-width: 600px;
+                min-width: 300px;
                 width: 40%;
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
+                padding-bottom: 20px;
             }
             #art {
-                width: 20%;
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
+                max-width: 300px;
             }
             p {
+                font-family: 'Montserrat', sans-serif;
+                max-width: 600px;
                 text-align: center;
             }
         </style>
     </head>
     <body>
-        <img src="Logo.svg" id="logo">
         <img src="Art.svg" id="art">
+        <img src="Logo.svg" id="logo">
         <p>Hot Shapes is a collection of handpicked procedurally generated geometric objects. Each shape is a one-of-a-kind 3+ dimensional function mapped to a physical space and rendered on a custom engine.</p>
+        <p> Questions? <a href="mailto:contact@hotshapes.io">contact@hotshapes.io</a></p>
+
+        <script>
+            let cards = ["101724965628336540515309027420188560323383384455428769227475658987654478823425",
+                        "101724965628336540515309027420188560323383384455428769227475658997550083473409",
+                        "101724965628336540515309027420188560323383384455428769227475658999749106728961",
+                        "101724965628336540515309027420188560323383384455428769227475659000848618356737",
+                        "101724965628336540515309027420188560323383384455428769227475659003047641612289",
+                        "101724965628336540515309027420188560323383384455428769227475658989853502078977"];
+            //window.onload = function() {
+            let card = document.createElement("nft-card")
+            card.setAttribute("tokenId", cards[~~(cards.length * Math.random())]);
+            card.setAttribute("contractAddress", "0x495f947276749ce646f68ac8c248420045cb7b5e");
+            let logo = document.getElementById("logo")
+            logo.after(card);
+            let script = document.createElement("script")
+            script.src = "https://unpkg.com/embeddable-nfts/dist/nft-card.min.js"
+            card.after(script)
+            //}
+        </script>
     </body>
 </html>
